@@ -1,4 +1,6 @@
+import { EmailFormComponent } from './email-form/email-form.component';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mass-communication';
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    this.dialog.open(EmailFormComponent)
+  }
 }

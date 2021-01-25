@@ -1,0 +1,8 @@
+.dialog-wraper {
+    padding: 0 100px
+}
+
+mat-form-field {
+  display: block;
+  margin: 5px
+}

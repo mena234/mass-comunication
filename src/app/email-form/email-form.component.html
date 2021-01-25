@@ -1,0 +1,67 @@
+<div class="dialog-wraper">
+  <h1 mat-dialog-title>Mass Communication</h1>
+  <div mat-dialog-content>
+    <p></p>
+    <mat-form-field>
+      <mat-label> Filter With </mat-label>
+      <mat-select [(value)]="filter">
+        <mat-option value="all"> All </mat-option>
+        <mat-option value="geography"> Geography </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="filter == 'geography'">
+      <mat-label>Country</mat-label>
+      <mat-select (selectionChange)="onSelectCountry($event.value)">
+        <mat-option value="Germany"> Germany </mat-option>
+        <mat-option value="Egypt"> Egypt </mat-option>
+        <mat-option value="America">America</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-chip-list
+      class="example-chip"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+    >
+      <mat-chip class="example-box" cdkDrag *ngFor="let user of filteredUsers">
+        {{ user.name }}
+      </mat-chip>
+    </mat-chip-list>
+    <form [formGroup]="emailFormGroup" autocomplete="off" (submit)="onSubmit()">
+      <mat-card>
+        <mat-card-title> Email Form </mat-card-title>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>to</mat-label>
+            <input matInput formControlName="to"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>cc</mat-label>
+            <input matInput formControlName="from"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>subject</mat-label>
+            <input matInput formControlName="subject"/>
+          </mat-form-field>
+          <button type="button" mat-raised-button (click)="fileInput.click()">
+            Attachment
+          </button>
+          <input
+            hidden
+            (change)="onFileSelected()"
+            #fileInput
+            type="file"
+            id="file"
+          />
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Submit</button>
+          <button mat-raised-button color="acent">Draft</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <!-- <button mat-button>No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button> -->
+  </div>
+</div>
