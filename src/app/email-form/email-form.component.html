@@ -21,6 +21,7 @@
       class="example-chip"
       cdkDropList
       cdkDropListOrientation="horizontal"
+      *ngIf="filteredUsers"
     >
       <mat-chip class="example-box" cdkDrag *ngFor="let user of filteredUsers">
         {{ user.name }}
@@ -30,32 +31,33 @@
       <mat-card>
         <mat-card-title> Email Form </mat-card-title>
         <mat-card-content>
-          <mat-form-field>
+          <!-- <mat-form-field>
             <mat-label>to</mat-label>
             <input matInput formControlName="to"/>
           </mat-form-field>
           <mat-form-field>
             <mat-label>cc</mat-label>
-            <input matInput formControlName="from"/>
-          </mat-form-field>
+            <input matInput formControlName="cc"/>
+          </mat-form-field> -->
           <mat-form-field>
             <mat-label>subject</mat-label>
             <input matInput formControlName="subject"/>
           </mat-form-field>
+          <quill-editor formControlName="body"></quill-editor>
           <button type="button" mat-raised-button (click)="fileInput.click()">
             Attachment
           </button>
           <input
             hidden
-            (change)="onFileSelected()"
+            (change)="onFileSelected($event)"
             #fileInput
             type="file"
             id="file"
           />
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary">Submit</button>
-          <button mat-raised-button color="acent">Draft</button>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="acent" type="button">Draft</button>
         </mat-card-actions>
       </mat-card>
     </form>

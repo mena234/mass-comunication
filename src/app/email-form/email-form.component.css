@@ -6,3 +6,7 @@ mat-form-field {
   display: block;
   margin: 5px
 }
+
+mat-card {
+  margin-top: 30px
+}
